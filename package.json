@@ -9,6 +9,9 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
+  "overrides": {
+    "@rollup/rollup-linux-x64-gnu": "npm:@rollup/rollup-linux-x64-musl"
+  },
   "dependencies": {
     "@nuxt/ui": "^2.14.1",
     "@nuxtjs/tailwindcss": "^6.11.4",
