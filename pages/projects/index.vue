@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="min-h-screen bg-gradient-to-br from-[#1E2527] to-[#141a1c] relative overflow-hidden"
-  >
+  <div class="min-h-screen bg-stone-700 relative overflow-hidden">
     <!-- Projects Badge -->
     <div class="absolute top-8 left-8 z-10">
       <div

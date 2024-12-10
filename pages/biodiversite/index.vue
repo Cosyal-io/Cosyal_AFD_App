@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
+  <div class="min-h-screen bg-white">
     <!-- Header -->
     <header class="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-10">
       <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -8,6 +8,21 @@
         </h1>
       </div>
     </header>
+
+    <!-- Modal for NFT Login -->
+    <div
+      v-if="isModalOpen"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+    >
+      <div
+        class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full text-black flex flex-col gap-10"
+      >
+        <div class="flex justify-center">
+          <div class="text-xl font-bold">We are minting your nft...</div>
+        </div>
+        <div class="flex justify-center"><div class="spinner mb-4"></div></div>
+      </div>
+    </div>
 
     <!-- Progress Steps -->
     <div class="container mx-auto px-4 pt-6">
@@ -406,33 +421,24 @@
       <img src="/pattern.svg" alt="" class="w-full h-full" />
     </div>
   </div>
-  <template>
-    <div
-      v-if="isOpen"
-      class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-    >
-      <div class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
-        <h2 class="text-xl font-bold mb-4">NFT Login Required</h2>
-        <p class="mb-4">Please log in to proceed with NFT creation.</p>
-        <button
-          @click="closeModal"
-          class="bg-primary text-white px-4 py-2 rounded"
-        >
-          Close
-        </button>
-      </div>
-    </div>
-  </template>
 </template>
+
 <script setup lang="ts">
+import { ref, reactive, computed, watch } from "vue";
+import { useNFT } from "@/composables/useNFT";
+
 const { postMintNFT } = useNFT();
 const currentStep = ref(0);
 const fileInputRef = ref<HTMLInputElement | null>(null);
 
-const isOpen = ref(false);
+const isModalOpen = ref(false);
+
+const openModal = () => {
+  isModalOpen.value = true;
+};
 
 const closeModal = () => {
-  isOpen.value = false;
+  isModalOpen.value = false;
 };
 
 const formTitles = ["Identité du projet", "LCPE", "Preuves d'impact"];
@@ -495,18 +501,13 @@ const triggerFileUpload = () => {
 };
 
 const handlePreuvesSubmit = (event: Event) => {
-  console.log("OPEN2");
-  isOpen.value = true;
-
   event.preventDefault();
   formData.preuves.showCertificateForm = true;
 };
 
 const handleFinalSubmit = async () => {
   try {
-    // Create the complete project data object
-    console.log("OPEN");
-    isOpen.value = true;
+    openModal();
     const projectData = {
       identity: {
         projectName: formData.identity.projectName,
@@ -532,11 +533,9 @@ const handleFinalSubmit = async () => {
       },
     };
 
-    // Mint NFT with the complete project data
     const tx = await postMintNFT(JSON.stringify(projectData));
 
     if (tx) {
-      // Show success message
       useToast().add({
         title: "Succès",
         description: "Le certificat a été créé avec succès",
@@ -621,5 +620,19 @@ watch(currentStep, (newStep) => {
 <style scoped>
 .container {
   max-width: 1280px;
+}
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #4f46e5; /* Change this color to match your theme */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>
