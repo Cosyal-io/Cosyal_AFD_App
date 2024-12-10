@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-screen bg-gradient-to-br from-[#1E2527] to-[#2C3539] flex flex-col items-center justify-between p-4 md:p-8 relative overflow-hidden"
+    class="min-h-screen bg-stone-700 flex flex-col items-center justify-between p-4 md:p-8 relative overflow-hidden"
   >
     <!-- Logo Section -->
     <div class="w-full flex justify-center mb-16 mt-8 px-4">
@@ -21,7 +21,7 @@
     >
       <NuxtLink to="/projects">
         <button
-          class="text-[#1E2527] bg-gradient-to-r from-[#C5D82D] to-[#D6E93D] hover:from-[#b1c229] hover:to-[#c2d435] text-5xl px-2 py-0.5 rounded-full w-64 h-32 flex items-center justify-center transform transition-all duration-300 hover:scale-105 shadow-lg"
+          class="text-[#1E2527] bg-gradient-to-r from-[#C5D82D] to-[#D6E93D] hover:from-[#b1c229] hover:to-[#c2d435] text-5xl rounded-full w-64 h-32 flex items-center justify-center transform transition-all duration-300 hover:scale-105 shadow-lg"
         >
           Projets
         </button>
