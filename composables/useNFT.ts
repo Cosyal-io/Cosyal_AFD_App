@@ -7,7 +7,7 @@ export function useNFT() {
           "Content-Type": "application/json",
         },
         body: {
-          tokenUrl,
+          tokenUrl: tokenUrl,
         },
       });
       return response;
