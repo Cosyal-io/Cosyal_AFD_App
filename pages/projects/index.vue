@@ -10,61 +10,53 @@
     <div class="container mx-auto px-8 pt-32 pb-16 relative z-10">
       <!-- Main Heading -->
       <h1
-        class="text-white text-5xl font-bold mb-16 max-w-3xl mx-auto text-center"
+        class="text-white text-3xl pt-10 sm:text-5xl font-bold mb-16 max-w-3xl mx-auto text-center"
       >
         Quelle est la catégorie d'impact de votre projet ?
       </h1>
 
       <!-- Button Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div
+        class="flex flex-col sm:flex-row gap-8 mx-auto items-center h-full pt-20"
+      >
         <NuxtLink to="/biodiversite" class="group">
-          <div
-            class="bg-[#F15A24] hover:bg-[#ff6b3d] text-white text-3xl py-8 px-10 rounded-3xl transition-all transform group-hover:scale-105 group-hover:shadow-2xl shadow-lg backdrop-blur-sm"
-          >
-            <div class="flex items-center space-x-4">
-              <Icon name="ph:leaf-fill" class="w-8 h-8" />
-              <span>Biodiversité</span>
-            </div>
-          </div>
+          <img
+            src="/biodiversite_boutton.png"
+            alt="Biodiversité"
+            class="h-auto rounded-3xl transition-all transform group-hover:scale-105 group-hover:shadow-2xl shadow-lg backdrop-blur-sm"
+          />
         </NuxtLink>
 
         <NuxtLink to="/carbone" class="group">
-          <div
-            class="bg-white hover:bg-gray-100 text-[#1E2527] text-3xl py-8 px-10 rounded-3xl transition-all transform group-hover:scale-105 group-hover:shadow-2xl shadow-lg backdrop-blur-sm"
-          >
-            <div class="flex items-center space-x-4">
-              <Icon name="ph:tree-fill" class="w-8 h-8" />
-              <span>Carbone</span>
-            </div>
-          </div>
+          <img
+            src="/carbone_bouton.png"
+            alt="Carbone"
+            class="h-auto rounded-3xl transition-all transform group-hover:scale-105 group-hover:shadow-2xl shadow-lg backdrop-blur-sm"
+          />
         </NuxtLink>
 
         <NuxtLink to="/impact-humain" class="group">
-          <div
-            class="bg-[#2A9D8F] hover:bg-[#34c5b3] text-white text-3xl py-8 px-10 rounded-3xl transition-all transform group-hover:scale-105 group-hover:shadow-2xl shadow-lg backdrop-blur-sm"
-          >
-            <div class="flex items-center space-x-4">
-              <Icon name="ph:users-fill" class="w-8 h-8" />
-              <span>Impact humain</span>
-            </div>
-          </div>
+          <img
+            src="/impact_humain_bouton.png"
+            alt="Impact Humain"
+            class="h-auto rounded-3xl transition-all transform group-hover:scale-105 group-hover:shadow-2xl shadow-lg backdrop-blur-sm"
+          />
         </NuxtLink>
 
         <NuxtLink to="/hybrid" class="group">
-          <div
-            class="bg-[#C5D82D] hover:bg-[#d9ed33] text-[#1E2527] text-3xl py-8 px-10 rounded-3xl transition-all transform group-hover:scale-105 group-hover:shadow-2xl shadow-lg backdrop-blur-sm"
-          >
-            <div class="flex items-center space-x-4">
-              <Icon name="ph:infinity-fill" class="w-8 h-8" />
-              <span>Hybrid</span>
-            </div>
-          </div>
+          <img
+            src="/hybrid_bouton.png"
+            alt="Hybrid"
+            class="h-auto rounded-3xl transition-all transform group-hover:scale-105 group-hover:shadow-2xl shadow-lg backdrop-blur-sm"
+          />
         </NuxtLink>
       </div>
     </div>
 
     <!-- Decorative Elements -->
-    <div class="absolute top-0 right-0 w-96 h-96 opacity-10 z-50">
+    <div
+      class="absolute top-0 right-0 w-96 h-96 opacity-10 z-50 hidden sm:block"
+    >
       <img
         src="/flower-cut.png"
         alt="Decorative Flower"
@@ -73,7 +65,9 @@
     </div>
 
     <!-- Footer with Logo -->
-    <div class="absolute bottom-8 left-8 flex items-center gap-4 z-10">
+    <div
+      class="absolute bottom-8 w-full flex justify-center items-center gap-4 z-10"
+    >
       <div class="relative w-32">
         <svg viewBox="0 0 400 100" class="w-full">
           <defs>

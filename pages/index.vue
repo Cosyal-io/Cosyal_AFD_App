@@ -3,8 +3,8 @@
     class="min-h-screen bg-stone-700 flex flex-col items-center justify-between p-4 md:p-8 relative overflow-hidden"
   >
     <!-- Logo Section -->
-    <div class="w-full flex justify-center mt-32 px-4">
-      <div class="relative w-[600px] h-[200px]">
+    <div class="w-full flex justify-center px-4">
+      <div class="relative w-[800px] h-[300px]">
         <!-- PNG logo -->
         <img
           src="/logo-white-cosyal.png"
@@ -20,18 +20,13 @@
       class="flex flex-col md:flex-row gap-8 items-center justify-center z-10"
     >
       <NuxtLink to="/projects">
-        <button
-          class="text-[#1E2527] bg-gradient-to-r from-[#C5D82D] to-[#D6E93D] hover:from-[#b1c229] hover:to-[#c2d435] text-5xl rounded-full w-64 h-32 flex items-center justify-center transform transition-all duration-300 hover:scale-105 shadow-lg"
-        >
-          Projets
-        </button>
+        <img src="/projets_button.png" alt="Projets" class="w-96 h-auto
+        transform transition-all duration-300 hover:scale-105"
       </NuxtLink>
-      <button
-        @click="navigateTo('/acheteurs')"
-        class="text-white bg-gradient-to-r from-[#F15A24] to-[#F47B51] hover:from-[#d94f1f] hover:to-[#e56e46] text-5xl px-2 py-0.5 rounded-3xl w-64 h-24 flex items-center justify-center transform transition-all duration-300 hover:scale-105 shadow-lg"
-      >
-        Acheteurs
-      </button>
+      <NuxtLink to="/projects">
+        <img src="/acheteurs_boutton.png" alt="Projets" class="w-96 h-auto
+        transform transition-all duration-300 hover:scale-105"
+      </NuxtLink>
     </div>
 
     <!-- Footer Section -->
