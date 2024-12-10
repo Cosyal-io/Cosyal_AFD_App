@@ -1,4 +1,5 @@
 import xrpl from "xrpl";
+import { sha512 } from "js-sha512";
 
 const SEED = process.env.XRPL_SEED;
 
@@ -47,7 +48,7 @@ export default defineEventHandler(async (event) => {
     const transactionJson: any = {
       TransactionType: "NFTokenMint",
       Account: wallet.classicAddress,
-      URI: xrpl.convertStringToHex(tokenUrl),
+      URI: xrpl.convertStringToHex(sha512(tokenUrl)),
       Flags: parseInt(flags.toString()),
       TransferFee: parseInt(transferFee.toString()),
       NFTokenTaxon: 0,

@@ -426,6 +426,7 @@
 <script setup lang="ts">
 import { ref, reactive, computed, watch } from "vue";
 import { useNFT } from "@/composables/useNFT";
+import { sha512 } from "js-sha512";
 
 const { postMintNFT } = useNFT();
 const currentStep = ref(0);
@@ -532,6 +533,8 @@ const handleFinalSubmit = async () => {
         certificateDescription: formData.preuves.certificateDescription,
       },
     };
+    // Mint NFT with the complete project data
+    console.log(sha512(JSON.stringify(projectData)));
 
     const tx = await postMintNFT(JSON.stringify(projectData));
 
@@ -621,6 +624,7 @@ watch(currentStep, (newStep) => {
 .container {
   max-width: 1280px;
 }
+
 .spinner {
   border: 4px solid rgba(0, 0, 0, 0.1);
   border-left-color: #4f46e5; /* Change this color to match your theme */
@@ -635,4 +639,5 @@ watch(currentStep, (newStep) => {
     transform: rotate(360deg);
   }
 }
+
 </style>
