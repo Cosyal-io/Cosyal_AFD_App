@@ -53,7 +53,7 @@
             <div class="text-lg">Votre certificat a été créé</div>
             <div class="flex gap-4">
               <UButton
-                :href="`https://testnet.xrpl.org/transactions/${tx}/raw`"
+                :href="`https://testnet.xrpl.org/transactions/${tx.value}/raw`"
                 target="_blank"
                 color="emerald"
                 icon="i-heroicons-arrow-top-right-on-square"
