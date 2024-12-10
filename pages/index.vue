@@ -5,31 +5,6 @@
     <!-- Logo Section -->
     <div class="w-full flex justify-center mb-16 mt-8 px-4">
       <div class="relative w-[400px] h-[100px]">
-        <!-- SVG logo -->
-        <svg
-          viewBox="0 0 400 100"
-          class="absolute inset-0 w-full h-full filter drop-shadow-lg"
-        >
-          <defs>
-            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#C5D82D" />
-              <stop offset="100%" stop-color="#F15A24" />
-            </linearGradient>
-          </defs>
-          <text
-            x="50%"
-            y="50%"
-            dominant-baseline="middle"
-            text-anchor="middle"
-            font-size="64"
-            font-weight="bold"
-            fill="url(#logoGradient)"
-            style="font-family: Arial, sans-serif"
-          >
-            COSYAL
-          </text>
-        </svg>
-
         <!-- PNG logo -->
         <img
           src="/logo-white-cosyal.png"
@@ -61,7 +36,9 @@
 
     <!-- Footer Section -->
     <div class="w-full max-w-4xl flex flex-col items-center gap-6 z-10">
-      <p class="text-white text-center text-lg font-light leading-relaxed">
+      <p
+        class="text-white text-center text-lg font-light leading-relaxed pb-10"
+      >
         Cosyal transpose numériquement les exigences de haute intégrité des
         meilleurs acteurs de la Finance Climat
       </p>
