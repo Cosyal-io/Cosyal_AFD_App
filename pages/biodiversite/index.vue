@@ -408,6 +408,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import { sha512 } from "js-sha512";
+
 const { postMintNFT } = useNFT();
 const currentStep = ref(0);
 const fileInputRef = ref<HTMLInputElement | null>(null);
@@ -505,6 +507,7 @@ const handleFinalSubmit = async () => {
     };
 
     // Mint NFT with the complete project data
+    console.log(sha512(JSON.stringify(projectData)));
     const tx = await postMintNFT(JSON.stringify(projectData));
 
     if (tx) {
@@ -595,4 +598,3 @@ watch(currentStep, (newStep) => {
   max-width: 1280px;
 }
 </style>
-
