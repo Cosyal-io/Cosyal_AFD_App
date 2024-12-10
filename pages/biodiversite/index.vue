@@ -1,8 +1,7 @@
 <template>
   <div class="min-h-screen bg-stone-700">
-    <!-- Header -->
-    <header class="mb-8">
-      <div class="flex flex-row gap-8 p-8">
+    <header class="mb-4">
+      <div class="flex flex-row gap-8 p-4">
         <NuxtLink
           to="/projects"
           class="transform hover:scale-105 transition-all"
@@ -71,46 +70,15 @@
     </div>
 
     <!-- Progress Steps -->
-    <div class="container mx-auto px-4 pt-6">
-      <div class="max-w-2xl mx-auto">
-        <div class="flex justify-between">
-          <template v-for="(title, index) in formTitles" :key="index">
-            <div class="flex items-center">
-              <div
-                :class="[
-                  'rounded-full w-8 h-8 flex items-center justify-center font-semibold',
-                  currentStep === index
-                    ? 'bg-emerald-600 text-white'
-                    : index < currentStep
-                      ? 'bg-emerald-200 text-emerald-700'
-                      : 'bg-gray-200 text-gray-500',
-                ]"
-              >
-                {{ index + 1 }}
-              </div>
-              <p
-                class="ml-2 text-sm hidden sm:block"
-                :class="
-                  currentStep === index
-                    ? 'text-emerald-600 font-medium'
-                    : 'text-gray-500'
-                "
-              >
-                {{ title }}
-              </p>
-            </div>
-            <template v-if="index < formTitles.length - 1">
-              <div class="flex-grow mx-2 mt-4">
-                <div class="h-0.5 bg-gray-200"></div>
-              </div>
-            </template>
-          </template>
-        </div>
-      </div>
+    <div
+      class="border-2 border-white bg-transparent p-4 mb-4 w-fit mx-auto rounded-2xl"
+    >
+      <h1 class="text-white text-3xl font-medium">
+        {{ stepTitles[currentStep] }}
+      </h1>
     </div>
-
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
+    <main class="container mx-auto px-4 py-4">
       <UCard class="max-w-2xl mx-auto backdrop-blur-sm bg-white/90">
         <template #header>
           <h2 class="text-2xl font-semibold text-gray-900">
@@ -500,7 +468,12 @@ const formTitles = [
   "Preuves d'impact",
   "Certificat d'impact",
 ];
-
+const stepTitles = {
+  0: "Identité",
+  1: "Libre Consentement Préalable et Eclairé",
+  2: "Preuves d'impact",
+  3: "Certificat d'impact",
+};
 const standards = [
   { label: "Biodivercity", value: "biodivercity" },
   { label: "NAT5", value: "nat5" },
