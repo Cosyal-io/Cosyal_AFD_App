@@ -16,7 +16,6 @@ export default defineEventHandler(async (event) => {
       transferFee = 0,
       network = "testnet", // Default to testnet for safety
     } = body;
-
     // Validate required fields
     if (!tokenUrl) {
       throw createError({
