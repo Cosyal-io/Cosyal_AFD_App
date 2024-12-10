@@ -1,11 +1,10 @@
-`<template>
+`
+<template>
   <div class="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
     <!-- Header -->
     <header class="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-10">
       <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <h1 class="text-4xl font-bold text-emerald-900">
-          Identité du projet
-        </h1>
+        <h1 class="text-4xl font-bold text-emerald-900">Identité du projet</h1>
       </div>
     </header>
 
@@ -67,7 +66,9 @@
           <UFormGroup label="Période d'évaluation de l'impact" required>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Du</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1"
+                  >Du</label
+                >
                 <UInput
                   v-model="evaluationStartDate"
                   type="date"
@@ -75,7 +76,9 @@
                 />
               </div>
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Au</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1"
+                  >Au</label
+                >
                 <UInput
                   v-model="evaluationEndDate"
                   type="date"
@@ -115,14 +118,14 @@
 </template>
 
 <script setup lang="ts">
-const router = useRouter()
+const router = useRouter();
 
-const projectName = ref('')
-const projectCountry = ref('')
-const projectGPS = ref('')
-const coSignatories = ref(['', '', ''])
-const evaluationStartDate = ref('')
-const evaluationEndDate = ref('')
+const projectName = ref("");
+const projectCountry = ref("");
+const projectGPS = ref("");
+const coSignatories = ref(["", "", ""]);
+const evaluationStartDate = ref("");
+const evaluationEndDate = ref("");
 
 const handleSubmit = () => {
   console.log({
@@ -132,17 +135,19 @@ const handleSubmit = () => {
     coSignatories: coSignatories.value,
     evaluationPeriod: {
       start: evaluationStartDate.value,
-      end: evaluationEndDate.value
-    }
-  })
-  
+      end: evaluationEndDate.value,
+    },
+  });
+
   // Navigate to LCPE questionnaire
-  router.push('/biodiversite/lcpe')
-}
+  router.push("/biodiversite/lcpe");
+};
 </script>
 
 <style scoped>
 .container {
   max-width: 1280px;
 }
-</style>`
+</style>
+`
+
