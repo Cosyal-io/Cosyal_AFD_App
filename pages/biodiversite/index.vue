@@ -21,8 +21,8 @@
                   currentStep === index
                     ? 'bg-emerald-600 text-white'
                     : index < currentStep
-                      ? 'bg-emerald-200 text-emerald-700'
-                      : 'bg-gray-200 text-gray-500',
+                    ? 'bg-emerald-200 text-emerald-700'
+                    : 'bg-gray-200 text-gray-500',
                 ]"
               >
                 {{ index + 1 }}
@@ -406,11 +406,34 @@
       <img src="/pattern.svg" alt="" class="w-full h-full" />
     </div>
   </div>
+  <template>
+    <div
+      v-if="isOpen"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+    >
+      <div class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+        <h2 class="text-xl font-bold mb-4">NFT Login Required</h2>
+        <p class="mb-4">Please log in to proceed with NFT creation.</p>
+        <button
+          @click="closeModal"
+          class="bg-primary text-white px-4 py-2 rounded"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </template>
 </template>
 <script setup lang="ts">
 const { postMintNFT } = useNFT();
 const currentStep = ref(0);
 const fileInputRef = ref<HTMLInputElement | null>(null);
+
+const isOpen = ref(false);
+
+const closeModal = () => {
+  isOpen.value = false;
+};
 
 const formTitles = ["Identité du projet", "LCPE", "Preuves d'impact"];
 
@@ -472,6 +495,9 @@ const triggerFileUpload = () => {
 };
 
 const handlePreuvesSubmit = (event: Event) => {
+  console.log("OPEN2");
+  isOpen.value = true;
+
   event.preventDefault();
   formData.preuves.showCertificateForm = true;
 };
@@ -479,6 +505,8 @@ const handlePreuvesSubmit = (event: Event) => {
 const handleFinalSubmit = async () => {
   try {
     // Create the complete project data object
+    console.log("OPEN");
+    isOpen.value = true;
     const projectData = {
       identity: {
         projectName: formData.identity.projectName,
@@ -539,7 +567,7 @@ const validateIdentityStep = computed(() => {
       projectCountry &&
       projectGPS &&
       evaluationStartDate &&
-      evaluationEndDate,
+      evaluationEndDate
   );
 });
 
@@ -595,4 +623,3 @@ watch(currentStep, (newStep) => {
   max-width: 1280px;
 }
 </style>
-
