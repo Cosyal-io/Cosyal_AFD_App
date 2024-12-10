@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "cosyal-platform",
   "private": true,
   "type": "module",
   "scripts": {
@@ -14,5 +14,16 @@
     "vue": "latest",
     "vue-router": "latest",
     "xrpl": "^4.0.0"
+    "@nuxt/ui": "^2.14.1",
+    "@nuxtjs/tailwindcss": "^6.11.4",
+    "@vueuse/core": "^10.9.0",
+    "nuxt": "^3.10.3",
+    "nuxt-icon": "^0.6.8",
+    "vue": "^3.4.19",
+    "vue-router": "^4.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3"
   }
 }
