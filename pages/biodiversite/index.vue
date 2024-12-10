@@ -1,11 +1,20 @@
 <template>
-  <div class="min-h-screen bg-white">
+  <div class="min-h-screen bg-stone-700">
     <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-10">
-      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <h1 class="text-4xl font-bold text-emerald-900">
-          {{ formTitles[currentStep] }}
-        </h1>
+    <header class="shadow-sm sticky top-10 z-10">
+      <div class="flex flex-col md:flex-row gap-8 items-center z-10 pl-5">
+        <NuxtLink to="/projects">
+          <div
+            class="bg-[#C5D82D] text-[#1E2527] text-4xl px-12 py-4 rounded-full transform hover:scale-105 transition-all shadow-xl"
+          >
+            Projets
+          </div>
+        </NuxtLink>
+        <button
+          class="text-white bg-gradient-to-r from-[#F15A24] to-[#F47B51] text-3xl px-2 py-0.5 rounded-3xl w-48 h-24 flex items-center justify-center transform transition-all duration-300 hover:scale-105 shadow-lg"
+        >
+          Biodiversité
+        </button>
       </div>
     </header>
 
@@ -60,8 +69,8 @@
                   currentStep === index
                     ? 'bg-emerald-600 text-white'
                     : index < currentStep
-                      ? 'bg-emerald-200 text-emerald-700'
-                      : 'bg-gray-200 text-gray-500',
+                    ? 'bg-emerald-200 text-emerald-700'
+                    : 'bg-gray-200 text-gray-500',
                 ]"
               >
                 {{ index + 1 }}
@@ -444,6 +453,11 @@
     <div class="fixed bottom-0 right-0 w-64 h-64 -z-10 opacity-10">
       <img src="/pattern.svg" alt="" class="w-full h-full" />
     </div>
+
+    <!-- Footer with Logo -->
+    <footer class="flex justify-center items-center py-4">
+      <img src="/logo-cosyal.png" alt="Cosya Logo" class="h-10" />
+    </footer>
   </div>
 </template>
 
@@ -468,7 +482,11 @@ const closeModal = () => {
   isModalOpen.value = false;
 };
 
-const formTitles = ["Identité du projet", "LCPE", "Preuves d'impact"];
+const formTitles = [
+  "Libre Consentement Préalable et Eclairé",
+  "Preuves d'impact",
+  "Certificat d'impact",
+];
 
 const standards = [
   { label: "Biodivercity", value: "biodivercity" },
@@ -589,7 +607,7 @@ const validateIdentityStep = computed(() => {
       projectCountry &&
       projectGPS &&
       evaluationStartDate &&
-      evaluationEndDate,
+      evaluationEndDate
   );
 });
 

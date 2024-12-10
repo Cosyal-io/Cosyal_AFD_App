@@ -3,8 +3,8 @@
     class="min-h-screen bg-stone-700 flex flex-col items-center justify-between p-4 md:p-8 relative overflow-hidden"
   >
     <!-- Logo Section -->
-    <div class="w-full flex justify-center mb-16 mt-8 px-4">
-      <div class="relative w-[400px] h-[100px]">
+    <div class="w-full flex justify-center mt-32 px-4">
+      <div class="relative w-[600px] h-[200px]">
         <!-- PNG logo -->
         <img
           src="/logo-white-cosyal.png"
@@ -17,7 +17,7 @@
 
     <!-- Buttons Section -->
     <div
-      class="flex flex-col md:flex-row gap-8 items-center justify-center mb-16 z-10"
+      class="flex flex-col md:flex-row gap-8 items-center justify-center z-10"
     >
       <NuxtLink to="/projects">
         <button
@@ -37,7 +37,7 @@
     <!-- Footer Section -->
     <div class="w-full max-w-4xl flex flex-col items-center gap-6 z-10">
       <p
-        class="text-white text-center text-lg font-light leading-relaxed pb-10"
+        class="text-white text-center text-lg font-light leading-relaxed pb-28 mb-40"
       >
         Cosyal transpose numériquement les exigences de haute intégrité des
         meilleurs acteurs de la Finance Climat
