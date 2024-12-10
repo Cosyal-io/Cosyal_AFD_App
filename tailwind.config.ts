@@ -9,7 +9,7 @@ export default {
     "./app.vue",
     "./error.vue",
   ],
-  darkMode: false,
+  darkMode: "media",
   theme: {
     extend: {
       colors: {
