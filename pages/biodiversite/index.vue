@@ -17,10 +17,34 @@
       <div
         class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full text-black flex flex-col gap-10"
       >
-        <div class="flex justify-center">
-          <div class="text-xl font-bold">We are minting your nft...</div>
-        </div>
-        <div class="flex justify-center"><div class="spinner mb-4"></div></div>
+        <template v-if="!tx">
+          <div class="flex flex-col items-center gap-4">
+            <div class="text-xl font-bold">We are minting your NFT...</div>
+            <div class="text-sm font-semibold">
+              Hash of the certificate: {{ computedHash }}
+            </div>
+          </div>
+          <div class="flex justify-center">
+            <div class="spinner mb-4"></div>
+          </div>
+        </template>
+
+        <template v-else>
+          <div class="flex flex-col items-center gap-6">
+            <div class="text-2xl font-bold text-emerald-600">
+              Congratulations!
+            </div>
+            <div class="text-lg">Your NFT has been successfully minted</div>
+            <UButton
+              :to="`https://testnet.xrpl.org/transactions/${tx}/raw`"
+              target="_blank"
+              color="emerald"
+              icon="i-heroicons-arrow-top-right-on-square"
+            >
+              View on Block Explorer
+            </UButton>
+          </div>
+        </template>
       </div>
     </div>
 
@@ -36,8 +60,8 @@
                   currentStep === index
                     ? 'bg-emerald-600 text-white'
                     : index < currentStep
-                    ? 'bg-emerald-200 text-emerald-700'
-                    : 'bg-gray-200 text-gray-500',
+                      ? 'bg-emerald-200 text-emerald-700'
+                      : 'bg-gray-200 text-gray-500',
                 ]"
               >
                 {{ index + 1 }}
@@ -427,11 +451,13 @@
 import { ref, reactive, computed, watch } from "vue";
 import { useNFT } from "@/composables/useNFT";
 import { sha512 } from "js-sha512";
+import { convertStringToHex } from "xrpl";
 
 const { postMintNFT } = useNFT();
 const currentStep = ref(0);
 const fileInputRef = ref<HTMLInputElement | null>(null);
-
+const tx = ref("");
+const projectData = ref("");
 const isModalOpen = ref(false);
 
 const openModal = () => {
@@ -452,6 +478,10 @@ const standards = [
   { label: "Gold Standards", value: "goldstandards" },
   { label: "NF Biodiversité", value: "nf-biodiversite" },
 ];
+const computedHash = computed(() => {
+  const hash = convertStringToHex(sha512(projectData.value));
+  return `${hash.slice(0, 6)}[...]${hash.slice(-6)}`;
+});
 
 const formData = reactive({
   identity: {
@@ -509,7 +539,7 @@ const handlePreuvesSubmit = (event: Event) => {
 const handleFinalSubmit = async () => {
   try {
     openModal();
-    const projectData = {
+    projectData.value = JSON.stringify({
       identity: {
         projectName: formData.identity.projectName,
         projectCountry: formData.identity.projectCountry,
@@ -532,19 +562,9 @@ const handleFinalSubmit = async () => {
         certificateTitle: formData.preuves.certificateTitle,
         certificateDescription: formData.preuves.certificateDescription,
       },
-    };
-    // Mint NFT with the complete project data
-    console.log(sha512(JSON.stringify(projectData)));
-
-    const tx = await postMintNFT(JSON.stringify(projectData));
-
-    if (tx) {
-      useToast().add({
-        title: "Succès",
-        description: "Le certificat a été créé avec succès",
-        color: "green",
-      });
-    }
+    });
+    const result = await postMintNFT(projectData.value);
+    tx.value = result.transaction.hash;
   } catch (error) {
     console.error("Error submitting form:", error);
     useToast().add({
@@ -569,7 +589,7 @@ const validateIdentityStep = computed(() => {
       projectCountry &&
       projectGPS &&
       evaluationStartDate &&
-      evaluationEndDate
+      evaluationEndDate,
   );
 });
 
@@ -627,7 +647,7 @@ watch(currentStep, (newStep) => {
 
 .spinner {
   border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #4f46e5; /* Change this color to match your theme */
+  border-left-color: green; /* Change this color to match your theme */
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -639,5 +659,4 @@ watch(currentStep, (newStep) => {
     transform: rotate(360deg);
   }
 }
-
 </style>
