@@ -21,17 +21,17 @@
     <!-- Modal for NFT Login -->
     <div
       v-if="isModalOpen"
-      class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-opacity-50"
     >
       <div
         class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full text-black flex flex-col gap-10"
       >
         <template v-if="!tx">
-          <div class="flex flex-col items-center gap-4">
-            <div class="text-xl font-bold">We are minting your NFT...</div>
-            <div class="text-sm font-semibold">
-              Hash of the certificate: {{ computedHash }}
-            </div>
+          <div class="text-xl font-bold">
+            Nous créons votre certificat d'impact...
+          </div>
+          <div class="text-sm font-semibold">
+            Hash du certificat : {{ computedHash }}
           </div>
           <div class="flex justify-center">
             <div class="spinner mb-4"></div>
@@ -41,17 +41,22 @@
         <template v-else>
           <div class="flex flex-col items-center gap-6">
             <div class="text-2xl font-bold text-emerald-600">
-              Congratulations!
+              Félicitations !
             </div>
-            <div class="text-lg">Your NFT has been successfully minted</div>
-            <UButton
-              :to="`https://testnet.xrpl.org/transactions/${tx}/raw`"
-              target="_blank"
-              color="emerald"
-              icon="i-heroicons-arrow-top-right-on-square"
-            >
-              View on Block Explorer
-            </UButton>
+            <div class="text-lg">Votre certificat a été créé</div>
+            <div class="flex gap-4">
+              <UButton
+                :href="`https://testnet.xrpl.org/transactions/${tx}/raw`"
+                target="_blank"
+                color="emerald"
+                icon="i-heroicons-arrow-top-right-on-square"
+              >
+                Voir sur le block explorer
+              </UButton>
+              <UButton to="/" color="gray" icon="i-heroicons-home">
+                Retour à l'accueil
+              </UButton>
+            </div>
           </div>
         </template>
       </div>

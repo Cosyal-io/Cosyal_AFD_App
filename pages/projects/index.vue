@@ -1,14 +1,11 @@
 <template>
   <div class="min-h-screen bg-stone-700 relative overflow-hidden">
     <!-- Projects Badge -->
-    <div class="absolute top-8 left-8 z-10">
-      <div
-        class="bg-[#C5D82D] text-[#1E2527] text-4xl px-12 py-4 rounded-full transform hover:scale-105 transition-all shadow-xl"
-      >
-        Projets
-      </div>
-    </div>
-
+    <img
+      src="/projets_button.png"
+      alt="Projets"
+      class="absolute top-8 left-8 z-10 transform hover:scale-105 transition-all w-[200px] h-auto"
+    />
     <!-- Main Content -->
     <div class="container mx-auto px-8 pt-32 pb-16 relative z-10">
       <!-- Main Heading -->
