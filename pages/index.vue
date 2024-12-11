@@ -44,13 +44,6 @@
       </p>
     </div>
 
-    <!-- Decorative Leaf -->
-    <div
-      class="absolute right-0 top-1/2 -translate-y-1/2 opacity-10 transition-opacity duration-500 ease-in-out hover:opacity-20"
-    >
-      <img src="/leaf.png" alt="Decorative Leaf" class="h-auto w-[400px]" />
-    </div>
-
     <!-- Environmental Metrics Button -->
     <div
       class="absolute bottom-4 right-4 z-10 flex items-center gap-2 bg-gray-200 bg-opacity-90 backdrop-filter backdrop-blur-sm rounded-md px-3 py-2 shadow-md transition-all duration-300 hover:bg-opacity-100 hover:shadow-lg"
