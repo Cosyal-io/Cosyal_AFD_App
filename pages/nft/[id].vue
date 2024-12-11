@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
-import { Client, nftInfoRequest } from "xrpl";
+import { Client } from "xrpl";
 
 interface NFTMetadata {
   id: string;
@@ -76,10 +76,26 @@ const goBack = () => {
 const retryFetch = () => {
   fetchNFTData();
 };
+
+// import { useNFT } from "@/composables/useNFT";
+// import { sha512 } from "js-sha512";
+// import { convertStringToHex } from "xrpl";
+
+// const computedHash = computed(() => {
+//   const hash = convertStringToHex(sha512(projectData.value));
+//   return `${hash.slice(0, 6)}[...]${hash.slice(-6)}`;
+// });
 </script>
 
 <template>
-  <div class="max-w-7xl mx-auto px-4 py-8">
+  <div
+    class="w-full min-h-screen px-4 py-8 flex flex-col justify-center"
+    style="
+      background-image: url('/bg.png');
+      background-size: cover;
+      background-position: center;
+    "
+  >
     <!-- Loading State -->
     <div v-if="isLoading" class="flex justify-center items-center min-h-[50vh]">
       <USpinner class="h-8 w-8" />
@@ -152,7 +168,11 @@ const retryFetch = () => {
             v-else
             class="aspect-square bg-gray-100 rounded-lg flex items-center justify-center"
           >
-            <span class="text-gray-400">No image available</span>
+            <img
+              src="/cert.png"
+              alt="Certificate Image"
+              class="w-full h-full object-cover"
+            />
           </div>
         </UCard>
       </div>
@@ -175,9 +195,9 @@ const retryFetch = () => {
           <div class="space-y-2">
             <div class="grid grid-cols-3 gap-2 text-sm">
               <span class="text-gray-500">Token ID</span>
-              <span class="col-span-2 font-mono">{{
-                blockchainData?.tokenId
-              }}</span>
+              <span class="col-span-2 font-mono break-words">
+                {{ blockchainData?.tokenId }}
+              </span>
 
               <span class="text-gray-500">Owner</span>
               <span class="col-span-2 font-mono">{{
@@ -188,15 +208,6 @@ const retryFetch = () => {
               <span class="col-span-2 font-mono">{{
                 blockchainData?.issuer
               }}</span>
-
-              <span class="text-gray-500">Taxon</span>
-              <span class="col-span-2">{{ blockchainData?.taxon }}</span>
-
-              <span class="text-gray-500">Sequence</span>
-              <span class="col-span-2">{{ blockchainData?.sequence }}</span>
-
-              <span class="text-gray-500">Transfer Fee</span>
-              <span class="col-span-2">{{ blockchainData?.transferFee }}%</span>
             </div>
           </div>
         </UCard>
