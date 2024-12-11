@@ -1,5 +1,12 @@
 <template>
-  <div class="min-h-screen bg-stone-700 relative overflow-hidden">
+  <div
+    class="min-h-screen bg-stone-700 relative overflow-hidden"
+    style="
+      background-image: url('/bg.png');
+      background-size: cover;
+      background-position: center;
+    "
+  >
     <!-- Projects Badge -->
     <img
       src="/projets_button.png"

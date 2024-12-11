@@ -1,6 +1,11 @@
 <template>
   <div
     class="min-h-screen bg-stone-700 flex flex-col items-center justify-between p-4 md:p-8 relative overflow-hidden"
+    style="
+      background-image: url('/bg.png');
+      background-size: cover;
+      background-position: center;
+    "
   >
     <!-- Logo Section -->
     <div class="w-full flex justify-center px-4">
@@ -21,18 +26,18 @@
     >
       <NuxtLink to="/projects">
         <img src="/projets_button.png" alt="Projets" class="w-96 h-auto
-        transform transition-all duration-300 hover:scale-105"
+        rounded-xl transform transition-all duration-300 hover:scale-105"
       </NuxtLink>
       <NuxtLink to="/projects">
-        <img src="/acheteurs_boutton.png" alt="Projets" class="w-96 h-auto
-        transform transition-all duration-300 hover:scale-105"
+        <img src="/acheteurs_bouton.png" alt="Projets" class="w-96 h-auto
+        rounded-xl transform transition-all duration-300 hover:scale-105"
       </NuxtLink>
     </div>
 
     <!-- Footer Section -->
     <div class="w-full max-w-4xl flex flex-col items-center gap-6 z-10">
       <p
-        class="text-white text-center text-lg font-light leading-relaxed pb-28 mb-40"
+        class="text-white text-center text-lg font-light leading-relaxed mb-40"
       >
         Cosyal transpose numériquement les exigences de haute intégrité des
         meilleurs acteurs de la Finance Climat

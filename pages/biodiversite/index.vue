@@ -1,5 +1,12 @@
 <template>
-  <div class="min-h-screen bg-stone-700">
+  <div
+    class="min-h-screen bg-stone-700"
+    style="
+      background-image: url('/bg.png');
+      background-size: cover;
+      background-position: center;
+    "
+  >
     <header class="mb-4">
       <div class="flex flex-row gap-8 p-4">
         <NuxtLink
@@ -593,7 +600,7 @@ const validateIdentityStep = computed(() => {
       projectCountry &&
       projectGPS &&
       evaluationStartDate &&
-      evaluationEndDate,
+      evaluationEndDate
   );
 });
 
