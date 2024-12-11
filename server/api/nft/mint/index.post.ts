@@ -59,12 +59,11 @@ export default defineEventHandler(async (event) => {
       const sign = wallet.sign(prepared);
       const tx: any = await client.submitAndWait(sign.tx_blob);
       await client.disconnect();
-      console.log(tx);
       return {
         success: true,
         transaction: {
           hash: tx.result.hash,
-          nftoken_id: tx.meta.nftoken_id,
+          nftoken_id: tx.result.meta.nftoken_id,
         },
       };
     } catch (error) {
