@@ -58,7 +58,7 @@
               Félicitations !
             </div>
             <div class="text-lg">Votre certificat a été créé</div>
-            <div class="flex gap-4">
+            <div class="flex flex-wrap gap-4">
               <UButton
                 :to="`https://testnet.xrpl.org/transactions/${tx}/raw`"
                 target="_blank"
@@ -66,6 +66,13 @@
                 icon="i-heroicons-arrow-top-right-on-square"
               >
                 Voir sur le block explorer
+              </UButton>
+              <UButton
+                :to="`/nft/${hash}`"
+                color="blue"
+                icon="i-heroicons-document-magnifying-glass"
+              >
+                Voir le certificat
               </UButton>
               <UButton to="/" color="gray" icon="i-heroicons-home">
                 Retour à l'accueil
@@ -143,7 +150,10 @@
                 />
               </UFormGroup>
 
-              <UFormGroup label="Position GPS" required>
+              <UFormGroup
+                label="Points de contrôle GPS de la zone géographique du projet"
+                required
+              >
                 <UInput
                   v-model="formData.identity.projectGPS"
                   placeholder="Ex: 48.8566, 2.3522"
@@ -459,6 +469,7 @@ const { postMintNFT } = useNFT();
 const currentStep = ref(0);
 const fileInputRef = ref<HTMLInputElement | null>(null);
 const tx = ref("");
+const hash = ref("");
 const projectData = ref("");
 const isModalOpen = ref(false);
 
@@ -576,6 +587,8 @@ const handleFinalSubmit = async () => {
     });
     const result = await postMintNFT(projectData.value);
     tx.value = result.transaction.hash;
+    hash.value = result.transaction.nftoken_id;
+    console.log("tx value : ", tx.value);
   } catch (error) {
     console.error("Error submitting form:", error);
     useToast().add({
