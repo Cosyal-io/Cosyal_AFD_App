@@ -136,7 +136,10 @@
                 />
               </UFormGroup>
 
-              <UFormGroup label="Position GPS" required>
+              <UFormGroup
+                label="Points de contrôle GPS de la zone géographique du projet"
+                required
+              >
                 <UInput
                   v-model="formData.identity.projectGPS"
                   placeholder="Ex: 48.8566, 2.3522"
@@ -569,6 +572,7 @@ const handleFinalSubmit = async () => {
     });
     const result = await postMintNFT(projectData.value);
     tx.value = result.transaction.hash;
+    console.log("tx value : ", tx.value);
   } catch (error) {
     console.error("Error submitting form:", error);
     useToast().add({
