@@ -1,5 +1,12 @@
 <template>
-  <div class="min-h-screen bg-stone-700 relative overflow-hidden">
+  <div
+    class="min-h-screen bg-stone-700 relative overflow-hidden"
+    style="
+      background-image: url('/bg.png');
+      background-size: cover;
+      background-position: center;
+    "
+  >
     <!-- Projects Badge -->
     <img
       src="/projets_button.png"
@@ -53,55 +60,22 @@
       </div>
     </div>
 
-    <!-- Decorative Elements -->
-    <div
-      class="absolute top-0 right-0 w-96 h-96 opacity-10 z-50 hidden sm:block"
-    >
-      <img
-        src="/flower-cut.png"
-        alt="Decorative Flower"
-        class="w-full h-full"
-      />
-    </div>
-
     <!-- Footer with Logo -->
-    <div
-      class="absolute bottom-8 w-full flex justify-center items-center gap-4 z-10"
+    <footer
+      class="absolute bottom-4 w-full flex justify-center items-center py-4"
     >
-      <div class="relative w-32">
-        <svg viewBox="0 0 400 100" class="w-full">
-          <defs>
-            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#C5D82D" />
-              <stop offset="100%" stop-color="#F15A24" />
-            </linearGradient>
-          </defs>
-          <text
-            x="50%"
-            y="50%"
-            dominant-baseline="middle"
-            text-anchor="middle"
-            font-size="64"
-            font-weight="bold"
-            fill="url(#logoGradient)"
-            style="font-family: Arial, sans-serif"
-          >
-            COSYAL
-          </text>
-        </svg>
-      </div>
-      <span class="text-white/60 text-sm">© 2025</span>
-    </div>
+      <img src="/logo-cosyal.png" alt="Cosya Logo" class="h-10" />
+    </footer>
+  </div>
 
-    <!-- Environmental Metrics Button -->
-    <div
-      class="absolute bottom-4 right-4 z-10 flex items-center gap-2 bg-gray-200 bg-opacity-90 backdrop-filter backdrop-blur-sm rounded-md px-3 py-2 shadow-md transition-all duration-300 hover:bg-opacity-100 hover:shadow-lg"
-    >
-      <img src="/xrp-icon.png" alt="XRP Icon" class="h-6 w-6" />
-      <div class="text-xs">
-        <div>Environmental metrics</div>
-        <div class="font-bold">XRP LEDGER</div>
-      </div>
+  <!-- Environmental Metrics Button -->
+  <div
+    class="absolute bottom-4 right-4 z-10 flex items-center gap-2 bg-gray-200 bg-opacity-90 backdrop-filter backdrop-blur-sm rounded-md px-3 py-2 shadow-md transition-all duration-300 hover:bg-opacity-100 hover:shadow-lg"
+  >
+    <img src="/xrp-icon.png" alt="XRP Icon" class="h-6 w-6" />
+    <div class="text-xs">
+      <div>Environmental metrics</div>
+      <div class="font-bold">XRP LEDGER</div>
     </div>
   </div>
 </template>
