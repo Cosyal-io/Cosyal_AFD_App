@@ -21,7 +21,8 @@
     "nuxt-icon": "^0.6.8",
     "vue": "^3.4.19",
     "vue-router": "^4.3.0",
-    "xrpl": "^4.0.0"
+    "xrpl": "^4.0.0",
+    "yup": "^1.5.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.24",

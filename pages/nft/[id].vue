@@ -88,35 +88,20 @@ const retryFetch = () => {
 </script>
 
 <template>
-  <div
-    class="w-full min-h-screen px-4 py-8 flex flex-col justify-center"
-    style="
-      background-image: url('/bg.png');
-      background-size: cover;
-      background-position: center;
-    "
-  >
+  <div class="w-full min-h-screen px-4 py-8 flex flex-col justify-center">
     <!-- Loading State -->
     <div v-if="isLoading" class="flex justify-center items-center min-h-[50vh]">
       <USpinner class="h-8 w-8" />
     </div>
 
     <!-- Enhanced Error State -->
-    <div
-      v-else-if="error"
-      class="min-h-[50vh] flex items-center justify-center"
-    >
+    <div v-else-if="error" class="min-h-[50vh] flex items-center justify-center">
       <UCard class="max-w-lg w-full">
         <div class="text-center space-y-6 p-4">
           <!-- Error Icon -->
           <div class="flex justify-center">
-            <div
-              class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center"
-            >
-              <Icon
-                name="heroicons:exclamation-triangle"
-                class="h-8 w-8 text-red-500"
-              />
+            <div class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center">
+              <Icon name="heroicons:exclamation-triangle" class="h-8 w-8 text-red-500" />
             </div>
           </div>
 
@@ -158,21 +143,9 @@ const retryFetch = () => {
       <!-- Left Column: Image -->
       <div class="space-y-4">
         <UCard>
-          <img
-            v-if="metadata?.image"
-            :src="metadata.image"
-            :alt="metadata.name"
-            class="w-full h-auto rounded-lg"
-          />
-          <div
-            v-else
-            class="aspect-square bg-gray-100 rounded-lg flex items-center justify-center"
-          >
-            <img
-              src="/cert.png"
-              alt="Certificate Image"
-              class="w-full h-full object-cover"
-            />
+          <img v-if="metadata?.image" :src="metadata.image" :alt="metadata.name" class="w-full h-auto rounded-lg" />
+          <div v-else class="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
+            <img src="/cert.png" alt="Certificate Image" class="w-full h-full object-cover" />
           </div>
         </UCard>
       </div>
@@ -202,12 +175,12 @@ const retryFetch = () => {
               <span class="text-gray-500">Owner</span>
               <span class="col-span-2 font-mono">{{
                 blockchainData?.owner
-              }}</span>
+                }}</span>
 
               <span class="text-gray-500">Issuer</span>
               <span class="col-span-2 font-mono">{{
                 blockchainData?.issuer
-              }}</span>
+                }}</span>
             </div>
           </div>
         </UCard>
@@ -216,11 +189,7 @@ const retryFetch = () => {
         <UCard v-if="metadata?.attributes?.length">
           <h2 class="text-lg font-semibold mb-4">Attributes</h2>
           <div class="grid grid-cols-2 gap-4">
-            <div
-              v-for="(attr, index) in metadata.attributes"
-              :key="index"
-              class="bg-gray-50 p-3 rounded-lg"
-            >
+            <div v-for="(attr, index) in metadata.attributes" :key="index" class="bg-gray-50 p-3 rounded-lg">
               <div class="text-sm text-gray-500">{{ attr.trait_type }}</div>
               <div class="font-medium">{{ attr.value }}</div>
             </div>

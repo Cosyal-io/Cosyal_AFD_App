@@ -1,75 +1,81 @@
 <template>
-  <div
-    class="min-h-screen bg-stone-700 flex flex-col items-center justify-between p-4 md:p-8 relative overflow-hidden"
-    style="
-      background-image: url('/bg.png');
-      background-size: cover;
-      background-position: center;
-    "
-  >
-    <!-- Logo Section -->
-    <div class="w-full flex justify-center px-4">
-      <div class="relative w-[800px] h-[300px]">
-        <!-- PNG logo -->
-        <img
-          src="/logo-white-cosyal.png"
-          alt="Cosyal Logo"
-          class="absolute inset-0 w-full h-full object-contain"
-          @error="handleImageError"
-        />
-      </div>
-    </div>
+  <div class="mt-20 flex flex-col items-center justify-center p-4 md:p-8 relative overflow-hidden">
 
-    <!-- Buttons Section -->
-    <div
-      class="flex flex-col md:flex-row gap-8 items-center justify-center z-10"
-    >
-      <NuxtLink to="/projects">
-        <img src="/projets_button.png" alt="Projets" class="w-96 h-auto
-        rounded-xl transform transition-all duration-300 hover:scale-105"
-      </NuxtLink>
-      <NuxtLink to="/projects">
-        <img src="/acheteurs_bouton.png" alt="Projets" class="w-96 h-auto
-        rounded-xl transform transition-all duration-300 hover:scale-105"
-      </NuxtLink>
+    <div class="rounded-3xl bg-black w-[300px] p-4"> <!-- Logo Section -->
+      <div class="w-full flex justify-center px-4">
+        <!-- PNG logo -->
+        <img src="/logo-white-cosyal.png" alt="Cosyal Logo" class="inset-0 w-[300px] object-contain" />
+      </div>
+      <div class="p-4">Merci de vous authentifier</div>
+
+      <UForm :schema="schema" :state="state" class="space-y-4 p-4" @submit="onSubmit">
+        <UFormGroup label="Email" name="email">
+          <UInput v-model="state.email" />
+        </UFormGroup>
+
+        <UFormGroup label="Mot de passe" name="password">
+          <UInput v-model="state.password" type="password" />
+        </UFormGroup>
+
+        <div class="flex justify-end">
+          <UButton type="submit" color="primary">
+            Connection
+          </UButton>
+        </div>
+      </UForm>
     </div>
 
     <!-- Footer Section -->
-    <div class="w-full max-w-4xl flex flex-col items-center gap-6 z-10">
-      <p
-        class="text-white text-center text-lg font-light leading-relaxed mb-40"
-      >
+    <div class="w-full md:w-1/2 flex flex-col items-center z-10">
+      <p class="text-white text-center text-lg font-light leading-relaxed m-4 bg-slate-600 rounded-md p-2">
         Cosyal transpose numériquement les exigences de haute intégrité des
         meilleurs acteurs de la Finance Climat
       </p>
     </div>
 
-    <!-- Environmental Metrics Button -->
-    <div
-      class="absolute bottom-4 right-4 z-10 flex items-center gap-2 bg-gray-200 bg-opacity-90 backdrop-filter backdrop-blur-sm rounded-md px-3 py-2 shadow-md transition-all duration-300 hover:bg-opacity-100 hover:shadow-lg"
-    >
-      <img src="/xrp-icon.png" alt="XRP Icon" class="h-6 w-6" />
-      <div class="text-xs">
-        <div>Environmental metrics</div>
-        <div class="font-bold">XRP LEDGER</div>
-      </div>
-    </div>
+
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
+import type { InferType } from 'yup'
+import { object, string } from 'yup'
+import type { FormSubmitEvent } from '#ui/types'
 
-const handleImageError = (e) => {
-  console.error("PNG logo failed to load:", e.target.src);
-  e.target.style.display = "none";
-};
+const router = useRouter()
 
-const navigateTo = (path) => {
-  console.log(`Navigating to: ${path}`);
-  // In a real application, you would use Vue Router here
-  // this.$router.push(path)
-};
+definePageMeta({
+  layout: 'full'
+})
+
+const schema = object({
+  email: string().email('Invalid email').required('Required'),
+  password: string()
+    .min(8, 'Must be at least 8 characters')
+    .required('Required')
+})
+
+type Schema = InferType<typeof schema>
+
+const state = reactive({
+  email: undefined,
+  password: undefined
+})
+
+const user = usePersistentState('user')
+
+async function onSubmit(event: FormSubmitEvent<Schema>) {
+  // Do something with event.data
+  console.log(event.data)
+  router.push('/projets')
+
+  const [username,] = state.email.split('@')
+  user.value = {
+    email: state.email,
+    username
+  }
+}
 </script>
 
 <style scoped>

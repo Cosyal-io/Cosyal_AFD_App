@@ -9,7 +9,7 @@ export default {
     "./app.vue",
     "./error.vue",
   ],
-  darkMode: "media",
+  darkMode: "selector",
   theme: {
     extend: {
       colors: {
@@ -17,6 +17,20 @@ export default {
         secondary: "#F15A24",
         tertiary: "#2A9D8F",
         background: "#1E2527",
+        "key-lime-pie": {
+          DEFAULT: "#C5D82D",
+          50: "#F0F5C8",
+          100: "#EBF2B7",
+          200: "#E2EB94",
+          300: "#D8E572",
+          400: "#CFDE4F",
+          500: "#C5D82D",
+          600: "#9DAD20",
+          700: "#727D17",
+          800: "#474E0F",
+          900: "#1C1F06",
+          950: "#070701",
+        },
       },
       animation: {
         gradient: "gradient 8s linear infinite",
